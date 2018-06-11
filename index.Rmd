@@ -337,7 +337,7 @@ Random effects are set using `f()` with parameters equal to the name of the vari
 For $u_i$, we use `model = "besag"` with neighbourhood matrix given by `g`. For $v_i$ we choose `model = "iid"`.
 
 ```{r}
-formula <- Y ~ smoking + f(re_u, model = "besag", graph = g) + f(re_v, model = "iid")
+formula <- Y ~ smoking + f(re_u, model = "besag", graph = g, scale.model = TRUE) + f(re_v, model = "iid")
 ```
 
 
@@ -357,7 +357,7 @@ summary(res)
 ```
 
 We see the intercept $\hat \beta_0=$ -0.3236 with a 95% credible interval equal to (-0.6212, -0.0279),
-and the coefficient of smoking is $\hat \beta_1=$ 1.1567 with a 95% credible interval equal to (-0.0810, 2.3853).
+and the coefficient of smoking is $\hat \beta_1=$ 1.1566 with a 95% credible interval equal to (-0.0811, 2.3853).
 We can plot the posterior distribution of the smoking coefficient. We do this by calculating a smoothing of the marginal distribution of the coefficient with `inla.smarginal()` and then plot it with `ggplot()` of the `ggplot2` package.
 ```{r}
 library(ggplot2)
